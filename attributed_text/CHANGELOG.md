@@ -1,3 +1,6 @@
+## [0.4.6] - May, 2026
+* [ADJUSTMENT] - `AttributedText` improved efficiency when finding attribution spans.
+
 ## [0.4.5] - Aug, 2025
 * [FIX] - `AttributedText` constructor and some operations break if placeholder map is not in content order.
 
