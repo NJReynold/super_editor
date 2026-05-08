@@ -1,3 +1,6 @@
+## [0.4.7] - May, 2026
+* [FIX] - Fixed regression in previous release.
+
 ## [0.4.6] - May, 2026
 * [ADJUSTMENT] - `AttributedText` improved efficiency when finding attribution spans.
 
