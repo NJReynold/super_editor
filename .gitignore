@@ -9,6 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
+*.lock
 
 # IntelliJ related
 *.iml
@@ -85,9 +86,6 @@ unlinked_spec.ds
 
 # Coverage
 coverage/
-
-# Submodules
-packages/**/pubspec.lock
 
 # Web related
 lib/generated_plugin_registrant.dart

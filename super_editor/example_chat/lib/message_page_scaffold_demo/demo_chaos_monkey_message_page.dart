@@ -305,8 +305,7 @@ class _ChatEditorState extends State<_ChatEditor> with SingleTickerProviderState
   }
 
   void _onImeConnectionChange() {
-    widget.messagePageController.collapsedMode =
-        _isImeConnected.value ? MessagePageSheetCollapsedMode.intrinsic : MessagePageSheetCollapsedMode.preview;
+    widget.messagePageController.collapsedMode = _isImeConnected.value ? MessagePageSheetCollapsedMode.intrinsic : MessagePageSheetCollapsedMode.preview;
   }
 
   void _onAnimationStatusChange(AnimationStatus status) {
@@ -503,5 +502,11 @@ class _InvisibleTextInputClient implements TextInputClient {
   @override
   void updateFloatingCursor(RawFloatingCursorPoint point) {
     // TODO: implement updateFloatingCursor
+  }
+
+  @override
+  bool onFocusReceived() {
+    // TODO: implement onFocusReceived
+    return false;
   }
 }
