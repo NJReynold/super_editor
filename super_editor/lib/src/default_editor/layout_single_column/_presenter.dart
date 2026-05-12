@@ -198,9 +198,7 @@ class SingleColumnLayoutPresenter {
   }
 
   SingleColumnLayoutViewModel? _getCleanCachedViewModel() {
-    return _earliestDirtyPhase > 0 && _earliestDirtyPhase < _phaseViewModels.length
-        ? _phaseViewModels[_earliestDirtyPhase - 1]
-        : null;
+    return _earliestDirtyPhase > 0 && _earliestDirtyPhase < _phaseViewModels.length ? _phaseViewModels[_earliestDirtyPhase - 1] : null;
   }
 
   void _notifyListenersOfChanges({
@@ -249,8 +247,8 @@ class SingleColumnLayoutPresenter {
 
       if (nodeIdToPreviousOrderMap[nodeId] != i) {
         // This component moved somewhere else. Mark this view model as changed.
-        editorLayoutLog.fine(
-            "Component for node $nodeId was at index ${nodeIdToPreviousOrderMap[nodeId]} but now it's at $i, marking the view model as changed");
+        editorLayoutLog
+            .fine("Component for node $nodeId was at index ${nodeIdToPreviousOrderMap[nodeId]} but now it's at $i, marking the view model as changed");
         changeMap[nodeId] = 2;
         continue;
       }
@@ -264,8 +262,7 @@ class SingleColumnLayoutPresenter {
 
       if (nodeIdToComponentMap[nodeId].runtimeType == newComponent.runtimeType) {
         // The component still exists, but it changed.
-        editorLayoutLog
-            .fine("Component for node $nodeId is the same runtime type, but changed content. Marking as changed.");
+        editorLayoutLog.fine("Component for node $nodeId is the same runtime type, but changed content. Marking as changed.");
         changeMap[nodeId] = 1;
         continue;
       }
@@ -380,8 +377,7 @@ abstract class ComponentBuilder {
   ///
   /// See [ComponentContext] for expectations about how to use the context
   /// to build a component widget.
-  Widget? createComponent(
-      SingleColumnDocumentComponentContext componentContext, SingleColumnLayoutComponentViewModel componentViewModel);
+  Widget? createComponent(SingleColumnDocumentComponentContext componentContext, SingleColumnLayoutComponentViewModel componentViewModel);
 }
 
 /// A single phase of style rules, which are applied in a pipeline to

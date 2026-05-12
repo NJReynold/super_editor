@@ -106,12 +106,8 @@ class SuperEditor extends StatefulWidget {
     this.autofocus = false,
     this.tapRegionGroupId,
     required this.editor,
-    @Deprecated(
-        "The document is now retrieved from the Editor. You should remove this property from your SuperEditor widget.")
-    this.document,
-    @Deprecated(
-        "The composer is now retrieved from the Editor. You should remove this property from your SuperEditor widget.")
-    this.composer,
+    @Deprecated("The document is now retrieved from the Editor. You should remove this property from your SuperEditor widget.") this.document,
+    @Deprecated("The composer is now retrieved from the Editor. You should remove this property from your SuperEditor widget.") this.composer,
     this.scrollController,
     this.documentLayoutKey,
     Stylesheet? stylesheet,
@@ -147,9 +143,7 @@ class SuperEditor extends StatefulWidget {
         selectionStyles = selectionStyle ?? defaultSelectionStyle,
         componentBuilders = [
           for (final plugin in plugins) ...plugin.componentBuilders,
-          if (componentBuilders != null)
-            ...componentBuilders
-          else ...[...defaultComponentBuilders, TaskComponentBuilder(editor)],
+          if (componentBuilders != null) ...componentBuilders else ...[...defaultComponentBuilders, TaskComponentBuilder(editor)],
           const UnknownComponentBuilder(),
         ],
         super(key: key);
@@ -194,14 +188,12 @@ class SuperEditor extends StatefulWidget {
   final Editor editor;
 
   /// The [Document] that's edited by the [editor].
-  @Deprecated(
-      "The Document is now retrieved from the Editor. You should remove this property from your SuperEditor widget.")
+  @Deprecated("The Document is now retrieved from the Editor. You should remove this property from your SuperEditor widget.")
   final Document? document;
 
   /// Owns the editor's current selection, the current attributions for
   /// text input, and other transitive editor configurations.
-  @Deprecated(
-      "The DocumentComposer is now retrieved from the Editor. You should remove this property from your SuperEditor widget.")
+  @Deprecated("The DocumentComposer is now retrieved from the Editor. You should remove this property from your SuperEditor widget.")
   final DocumentComposer? composer;
 
   /// [GlobalKey] that's bound to the [DocumentLayout] within
@@ -342,8 +334,7 @@ class SuperEditor extends StatefulWidget {
   final Map<String, SuperEditorSelectorHandler>? selectorHandlers;
 
   /// Shows, hides, and positions a floating toolbar and magnifier.
-  @Deprecated(
-      "To configure overlay controls, surround SuperEditor with a SuperEditorIosControlsScope and/or SuperEditorAndroidControlsScope")
+  @Deprecated("To configure overlay controls, surround SuperEditor with a SuperEditorIosControlsScope and/or SuperEditorAndroidControlsScope")
   final MagnifierAndToolbarController? overlayController;
 
   /// Color of the text selection drag handles on Android.
@@ -369,8 +360,7 @@ class SuperEditor extends StatefulWidget {
   /// If no clipper factory method is provided, then the overlay controls
   /// will be allowed to appear anywhere in the overlay in which they sit
   /// (probably the entire screen).
-  @Deprecated(
-      "To configure an overlay clipper, surround SuperEditor with a SuperEditorIosControlsScope and/or a SuperEditorAndroidControlsScope")
+  @Deprecated("To configure an overlay clipper, surround SuperEditor with a SuperEditorIosControlsScope and/or a SuperEditorAndroidControlsScope")
   final CustomClipper<Rect> Function(BuildContext overlayContext)? createOverlayControlsClipper;
 
   /// Plugins that add sets of behaviors to the editing experience.
@@ -459,8 +449,7 @@ class SuperEditorState extends State<SuperEditor> {
     super.initState();
 
     if (widget.editor.maybeDocument == null) {
-      throw Exception(
-          "No Document is available to SuperEditor. The Editor given to SuperEditor must contain a MutableDocument in the set of Editables.");
+      throw Exception("No Document is available to SuperEditor. The Editor given to SuperEditor must contain a MutableDocument in the set of Editables.");
     }
     if (widget.editor.maybeComposer == null) {
       throw Exception(
@@ -642,9 +631,8 @@ class SuperEditorState extends State<SuperEditor> {
       selectedTextColorStrategy: widget.stylesheet.selectedTextColorStrategy,
     );
 
-    final showComposingUnderline = defaultTargetPlatform == TargetPlatform.macOS ||
-        defaultTargetPlatform == TargetPlatform.iOS ||
-        defaultTargetPlatform == TargetPlatform.android;
+    final showComposingUnderline =
+        defaultTargetPlatform == TargetPlatform.macOS || defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android;
 
     _docLayoutPresenter = SingleColumnLayoutPresenter(
       document: document,
@@ -710,8 +698,7 @@ class SuperEditorState extends State<SuperEditor> {
 
   /// Returns the key handlers that respond to keyboard events within [SuperEditor].
   List<SuperEditorKeyboardAction> get _keyboardActions =>
-      widget.keyboardActions ??
-      (inputSource == TextInputSource.ime ? defaultImeKeyboardActions : defaultKeyboardActions);
+      widget.keyboardActions ?? (inputSource == TextInputSource.ime ? defaultImeKeyboardActions : defaultKeyboardActions);
 
   void _openSoftwareKeyboard() {
     if (!_softwareKeyboardController.hasDelegate) {
@@ -735,8 +722,7 @@ class SuperEditorState extends State<SuperEditor> {
             editor: widget.editor,
             document: widget.editor.document,
             selection: _composer.selectionNotifier,
-            isDocumentLayoutAvailable: () =>
-                (_docLayoutKey.currentContext?.findRenderObject() as RenderSliver?)?.hasSize == true,
+            isDocumentLayoutAvailable: () => (_docLayoutKey.currentContext?.findRenderObject() as RenderSliver?)?.hasSize == true,
             getDocumentLayout: () => editContext.documentLayout,
             placeCaretAtEndOfDocumentOnGainFocus: widget.selectionPolicies.placeCaretAtEndOfDocumentOnGainFocus,
             restorePreviousSelectionOnGainFocus: widget.selectionPolicies.restorePreviousSelectionOnGainFocus,
@@ -1809,15 +1795,11 @@ TextStyle defaultStyleBuilder(Set<Attribution> attributions) {
       );
     } else if (attribution == underlineAttribution) {
       newStyle = newStyle.copyWith(
-        decoration: newStyle.decoration == null
-            ? TextDecoration.underline
-            : TextDecoration.combine([TextDecoration.underline, newStyle.decoration!]),
+        decoration: newStyle.decoration == null ? TextDecoration.underline : TextDecoration.combine([TextDecoration.underline, newStyle.decoration!]),
       );
     } else if (attribution == strikethroughAttribution) {
       newStyle = newStyle.copyWith(
-        decoration: newStyle.decoration == null
-            ? TextDecoration.lineThrough
-            : TextDecoration.combine([TextDecoration.lineThrough, newStyle.decoration!]),
+        decoration: newStyle.decoration == null ? TextDecoration.lineThrough : TextDecoration.combine([TextDecoration.lineThrough, newStyle.decoration!]),
       );
     } else if (attribution == superscriptAttribution) {
       newStyle = newStyle.copyWith(

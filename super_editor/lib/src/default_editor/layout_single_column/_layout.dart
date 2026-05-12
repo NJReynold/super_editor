@@ -283,8 +283,7 @@ class _SingleColumnDocumentLayoutState extends State<SingleColumnDocumentLayout>
     if (base.nodeId == extent.nodeId) {
       // Selection within a single node.
       topComponent = extentComponent;
-      final componentOffsetInDocument = (topComponent.context.findRenderObject() as RenderBox)
-          .localToGlobal(Offset.zero, ancestor: documentLayoutBox);
+      final componentOffsetInDocument = (topComponent.context.findRenderObject() as RenderBox).localToGlobal(Offset.zero, ancestor: documentLayoutBox);
 
       final componentBoundingBox = extentComponent
           .getRectForSelection(
@@ -305,8 +304,7 @@ class _SingleColumnDocumentLayoutState extends State<SingleColumnDocumentLayout>
 
       for (int i = 0; i < selectedNodes.length; ++i) {
         final component = getComponentByNodeId(selectedNodes[i])!;
-        final componentOffsetInDocument =
-            (component.context.findRenderObject() as RenderBox).localToGlobal(Offset.zero, ancestor: documentLayoutBox);
+        final componentOffsetInDocument = (component.context.findRenderObject() as RenderBox).localToGlobal(Offset.zero, ancestor: documentLayoutBox);
 
         if (i == 0) {
           // This is the first node. The selection goes from
@@ -450,8 +448,7 @@ class _SingleColumnDocumentLayoutState extends State<SingleColumnDocumentLayout>
 
     if (topNodeId == null || bottomNodeId == null) {
       // No document content exists in the given region.
-      editorLayoutLog
-          .finer(' - no document content exists in the region. Node at top: $topNodeId. Node at bottom: $bottomNodeId');
+      editorLayoutLog.finer(' - no document content exists in the region. Node at top: $topNodeId. Node at bottom: $bottomNodeId');
       return null;
     }
 
@@ -526,9 +523,7 @@ class _SingleColumnDocumentLayoutState extends State<SingleColumnDocumentLayout>
   @override
   MouseCursor? getDesiredCursorAtOffset(Offset documentOffset) {
     final componentKey = _findComponentAtOffset(documentOffset);
-    if (componentKey == null ||
-        componentKey.currentContext == null ||
-        componentKey.currentContext!.findRenderObject() == null) {
+    if (componentKey == null || componentKey.currentContext == null || componentKey.currentContext!.findRenderObject() == null) {
       return null;
     }
 
