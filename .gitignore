@@ -10,6 +10,7 @@
 .svn/
 migrate_working_dir/
 *.lock
+**/generated**
 
 # IntelliJ related
 *.iml
@@ -83,6 +84,14 @@ unlinked_spec.ds
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
+
+# Linux Related
+**/linux/**/generated**
+
+# MacOs Related
+**/macos/**/generated**
+
+## Windows Related
 
 # Coverage
 coverage/
